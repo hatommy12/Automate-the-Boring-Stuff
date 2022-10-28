@@ -1,14 +1,21 @@
+# Collatz Sequence 
+
+#Function that returns a number depending on whether it's even or odd
 def collatz(number):
+  #Checks if number is even, if even, its divides number by 2 and rounds down. Print resulting numbers.
   if number % 2 == 0:
     results = number // 2
     print(results)
     return results
+    
+  #If it's not even, its odd. Gets multiplied by 3 and adds 1, prints and returns result
   else:
     results = (3 * number) + 1
     print(results)
     return results
 
-
+#Check if user input is a valid number. int() will convert to integer if input is an integer, or gives an error if input is not an integer/float. 
+#Error will continue to except clause.
 try:
   user_input = int(input("Enter Number: \n"))
   
