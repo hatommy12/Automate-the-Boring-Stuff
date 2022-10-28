@@ -1,0 +1,9 @@
+def list_into_string(list):
+  return_string = ""
+  for string in list[:-1]:
+    return_string += string + ", "
+  return_string += "and " + list[-1]
+  return return_string
+
+spam = ['apples', 'bananas', 'tofu', 'cats']
+print(list_into_string(spam))
