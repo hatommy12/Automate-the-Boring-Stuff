@@ -1,9 +1,16 @@
+"""Comma Code"""
+
+#Takes a list and converts it into a singular string, seperated by commas and a space. The final word will be seperated by "and" inbetween the final two words.
+#Checks for blank list via if statement
 def list_into_string(list):
   return_string = ""
+  if list == []:
+    print("List is blank!")
+    return None
   for string in list[:-1]:
     return_string += string + ", "
   return_string += "and " + list[-1]
-  return return_string
+  return print(return_string)
 
-spam = ['apples', 'bananas', 'tofu', 'cats']
-print(list_into_string(spam))
+spam = ['apples', 'bananas', 'tofu', 'cats','dogs']
+list_into_string(spam)
