@@ -1,0 +1,23 @@
+"""Coin Flip Streaks"""
+import random
+
+#A quick google search says my odds are (1/64)*95, which is 1.484375%.
+numberOfStreaks = 0
+for experimentNumber in range(10000):
+  # Code that creates a list of 100 'heads' or 'tails' values.
+  coin_flip_list = []
+  for int in range(0,100,1):
+    flip = random.randint(0,1)
+    if flip == 0:
+      coin_flip_list.append("H")
+    else:
+      coin_flip_list.append("T")
+    
+  # Code that checks if there is a streak of 6 heads or tails in a row.
+  coin_flip_string = ""
+  for flip in coin_flip_list:
+    coin_flip_string += flip
+ 
+  numberOfStreaks += coin_flip_string.count("TTTTTT") + coin_flip_string.count("HHHHHH")
+print(coin_flip_string)
+print('Chance of streak: %s%%' % ((numberOfStreaks / 100)/100))
