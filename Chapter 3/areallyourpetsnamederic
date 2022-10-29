@@ -1,0 +1,21 @@
+"""areallyourpetsnamederic"""
+
+petnames = []
+
+# Collect Pet names
+input_name = True
+while input_name:
+  name = input("what is your pets name? (Blank to quit)\n")
+  petnames.append(name)
+  if name == "":
+    input_name = False
+
+# Checks if they're all named eric, Case-insensitive. Prints result
+for name in petnames:
+  if name.lower() == "eric":
+    continue
+  elif name.lower() == "":
+    print("They're all named eric! What wrong with you?!")
+  else:
+    print("All your pets aren't named Eric! Shame on you.")
+    break
