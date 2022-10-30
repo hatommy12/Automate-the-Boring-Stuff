@@ -1,5 +1,4 @@
 """Tic-Tac-Toe"""
-
 # Layout of the board in dictionary format
 theBoard = {'top-L': ' ', 'top-M': ' ', 'top-R': ' ',
             'mid-L': ' ', 'mid-M': ' ', 'mid-R': ' ',
@@ -35,14 +34,25 @@ def checkScore(board):
       return True 
 
 
-# Asks the player for their move, updates and prints the board
+# Asks the player for there move, updates and prints the board
 turn = "X"
 for i in range(9):
   printBoard(theBoard)
   if checkScore(theBoard):
     break
-  move = input("For player " + turn + ". What is your move?")
-  theBoard[move] = turn
+  # Checks for invalid moves
+  validMove = True
+  while validMove:
+    move = input("For player " + turn + ". What is your move?\n")
+    try:
+      if theBoard[move] == " ":
+        theBoard[move] = turn
+        validMove= False 
+      else:
+        print("Move has already been played, please play another.")
+    except:
+      print("Invalid Move")
+  # Changes to the next player's turn
   if turn == "X":
     turn = "O"
   else:
