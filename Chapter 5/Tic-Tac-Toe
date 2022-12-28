@@ -12,7 +12,7 @@ def printBoard(board):
     print('-+-+-')
     print(board['low-L'] + '|' + board['low-M'] + '|' + board['low-R'])
 
-# Checks the board for any of the 5 win conditions, does so for "X" and "O"
+# Checks the board for any of the 8 win conditions, does so for "X" and "O"
 def checkScore(board):
   turnlist = ["X","O"]
   winMessage = "Congratz, you've won!"
@@ -25,6 +25,15 @@ def checkScore(board):
       return True 
     elif board['low-L'] == turn and board['low-M'] == turn and board['low-R'] == turn:
       print(f"Player {turn}, {winMessage}")
+      return True
+    elif board['top-L'] == turn and board['mid-L'] == turn and board['low-L'] == turn:
+      print(f"Player {turn}, {winMessage}")
+      return True
+    elif board['top-M'] == turn and board['mid-M'] == turn and board['low-M'] == turn:
+      print(f"Player {turn}, {winMessage}")
+      return True 
+    elif board['top-R'] == turn and board['mid-R'] == turn and board['low-R'] == turn:
+      print(f"Player {turn}, {winMessage}")
       return True 
     elif board['low-L'] == turn and board['mid-M'] == turn and board['top-R'] == turn:
       print(f"Player {turn}, {winMessage}")
@@ -32,7 +41,6 @@ def checkScore(board):
     elif board['top-L'] == turn and board['mid-M'] == turn and board['low-R'] == turn:
       print(f"Player {turn}, {winMessage}")
       return True 
-
 
 # Asks the player for there move, updates and prints the board
 turn = "X"
