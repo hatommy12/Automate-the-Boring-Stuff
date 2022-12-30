@@ -1,0 +1,48 @@
+"""Chess Dictionary Validator"""
+
+testBoard = {'1h': 'bking', '6c': 'wqueen', '2g': 'bbishop', '5h': 'bqueen', '3e': 'wking'}
+
+def validChessboard(chessboard):
+  #Dictionary containing values to check
+  validBoard = {"bking":1,"wking":1,"wpawn":8,"bpawn":8,"bqueen":1,"wqueen":1,"bbishop":2,"wbishop":2,"brook":2,"wrook":2,"wknight":2,"bknight":2}
+  validPieces = ("king","queen","knight","rook","bishop","pawn")
+  
+  #Grabs the chess pieces and appends them into a list
+  piecesList = []
+  for v in chessboard.values():
+    piecesList.append(v)
+    
+  #Counts the chess pieces and adds it into a dictionary wit the chess piece as key, and amount as value
+  countBoard = {}
+  for k in validBoard.keys():
+    countBoard[k] = piecesList.count(k)
+    
+  #Compares a valid chess board to our actual board, making sure no pieces should exceed their limit
+  for k,v in validBoard.items():
+    if v < countBoard[k]: 
+      print("Invalid Board!")
+      return False
+
+  #Checks for valid chess piece names
+  for v in chessboard.values():
+    if v[1:] not in validPieces:
+      print(f"{v} is an invalid piece")
+      return False
+
+  #Check for invalid positions and piece position
+  for k,v in chessboard.items():
+    if int(k[0]) < 1 or int(k[0]) > 8:
+      print (f"{k} is invalid placement for {v}")
+      return False
+    elif k[1].lower() < "a" or k[1].lower() > "h":
+      print(f"{k} is invalid placement for {v}")
+      return False
+    #checks for "w" or "b" in front of piece name e.g. "bking"
+    elif v[0] != "w": 
+      if v[0] != "b":
+        print(f"{v} is an invalid position")
+        return False  
+
+  return True
+
+print(validChessboard(testBoard))
