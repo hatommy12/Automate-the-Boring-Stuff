@@ -1,0 +1,31 @@
+"""Fantasy Game Inventory"""
+stuff = {'rope': 1, 'torch': 6, 'gold coin': 42, 'dagger': 1, 'arrow': 12}
+  
+def displayInventory(playerInventory):
+  print("Inventory:")
+  item_total = 0
+  #displays inventory and item total
+  for k, v in playerInventory.items():
+    print(f"{v} {k}")
+    item_total += v 
+  print("Total number of items: " + str(item_total))
+
+def addToInventory(inventory, addedItems):
+  #sums up items in a list and outputs a dictionary with a value
+  dictionary = {}
+  for item in addedItems:
+      dictionary[item] = addedItems.count(item)
+
+  #combines two dictionaries together, sum values if key is the same
+  combinedInventory = {}
+  for k in inventory:
+    combinedInventory[k] = inventory.get(k,0) + dictionary.get(k,0)
+  for k in dictionary:
+    combinedInventory[k] = inventory.get(k,0) + dictionary.get(k,0)
+  return combinedInventory
+  
+inv = {'gold coin': 42, 'rope': 1}
+dragonLoot = ['gold coin', 'dagger', 'gold coin', 'gold coin', 'ruby','ruby']
+inv = addToInventory(inv, dragonLoot)
+displayInventory(inv)
+displayInventory(stuff)
