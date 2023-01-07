@@ -1,0 +1,32 @@
+"""Table Printer"""
+
+tableData = [['apples', 'oranges', 'cherries', 'banana'],
+             ['Alice', 'Bob', 'Carol', 'David'],
+             ['dogs', 'cats', 'moose', 'goose'],
+             ['Tommy', 'Jimmy', 'Shannon', 'Tigran']]
+
+def printTable(tableData):
+  colWidths = [0] * len(tableData)
+  #Finds the max width in each list in lists, and outputs it into colWidths
+  for list in tableData:
+    maxWidth = 0
+    for word in list:
+      if len(word) > maxWidth:
+        maxWidth = len(word)
+    colWidths[tableData.index(list)] = maxWidth
+
+  for i in range(4):
+    for list in range(len(tableData)):
+      print(tableData[list][i].rjust(colWidths[list]), end = " ")
+    print()
+
+"""
+    The logic of my for loop in terms of how it iterates tableData
+      [0][0]
+      [1][0]
+      [2][0]
+      [0][1]
+      [1][1]
+      [2][1]
+"""
+printTable(tableData)
